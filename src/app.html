@@ -1,0 +1,28 @@
+<template>
+  <div class="row">
+    <div class="cell vertical-text" style="border: 0; padding: 1px;"></div>
+    <div class="cell vertical-text" repeat.for="count of grid.columnCounts">
+      ${count}
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+  <div repeat.for="row of grid.value" class="row">
+    <div class="cell" style="text-align: right;">
+      ${grid.rowCounts[$index].reverse()}
+    </div>
+    <div repeat.for="cell of row" class="cell" click.delegate="cell.toggle()" css="background-color: ${cell.style}">
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+
+  <br>
+  <button class="uk-button" click.delegate="validate()">validate</button>
+  <button class="uk-button uk-button-primary" click.delegate="solve()">solve</button>
+  <hr>
+  <h1>Secret Answer</h1>
+  <div repeat.for="row of secretAnswer" class="row">
+    <div repeat.for="cell of row" class="cell" click.delegate="cell.toggle()" css="background-color: ${cell.style}">
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+</template>
